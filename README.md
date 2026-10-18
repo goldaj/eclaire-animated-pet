@@ -1,0 +1,24 @@
+# Éclaire | Animated Pet
+
+**Bibliothèque d'animations 2D | sprites PNG · GIF · spritesheets**
+
+Éclaire est un personnage animé conçu pour servir de compagnon graphique dans une application ou un environnement de travail. Ce dépôt conserve les ressources visuelles, les planches de sprites et les prévisualisations des différents comportements.
+
+## Animations disponibles
+
+- `idle`, `jump`, `wave` et déplacements `fly-left` / `fly-right`
+- `waiting`, `active-work`, `review` et `failure`
+- Variantes PNG frame par frame, GIFs animés et spritesheet
+- Prévisualisation vidéo de l'ensemble des états
+
+## Arborescence
+
+`assets/` contient les ressources de référence, destinées à être chargées par une interface web, un petit outil desktop ou un moteur 2D.
+
+## Intégration
+
+Le dépôt fournit des **assets et états d'animation**, pas encore un moteur d'animation exécutable. Les prochaines itérations ajouteront un manifeste JSON des états, des timings et une démonstration web.
+
+## Compétences
+
+Direction visuelle de prototype, déclinaison de sprites, gestion d'assets et spécification d'états UI.
