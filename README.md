@@ -22,3 +22,7 @@ Le dépôt fournit des **assets et états d'animation**, pas encore un moteur d'
 ## Compétences
 
 Direction visuelle de prototype, déclinaison de sprites, gestion d'assets et spécification d'états UI.
+
+## Archive native supplémentaire
+
+La [variante Work Pet v2](versions/work-pet-v2/) conserve aussi la planche WebP et les prévisualisations natives du compagnon original.

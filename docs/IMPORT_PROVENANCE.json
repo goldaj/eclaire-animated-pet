@@ -1,0 +1,78 @@
+{
+  "import_date": "2026-10-18",
+  "note": "Originals and source mappings remain local. Public configuration edits are described in README.",
+  "files": [
+    {
+      "path": "versions/work-pet-v2/spritesheet.webp",
+      "source_group": "eclaire-work-pet-v2",
+      "published_sha256": "46390dcf473cd23da00b7968c2a940edf8debf759cc1266348448baa947095a5",
+      "source_sha256": "46390dcf473cd23da00b7968c2a940edf8debf759cc1266348448baa947095a5"
+    },
+    {
+      "path": "versions/work-pet-v2/contact-sheet.png",
+      "source_group": "eclaire-work-pet-v2",
+      "published_sha256": "38f349435c2f1ab25fa5826474ff35a0ec28d9ea180f6fbe4182ef6b24bde3b4",
+      "source_sha256": "38f349435c2f1ab25fa5826474ff35a0ec28d9ea180f6fbe4182ef6b24bde3b4"
+    },
+    {
+      "path": "versions/work-pet-v2/look-directions.png",
+      "source_group": "eclaire-work-pet-v2",
+      "published_sha256": "ddac97e98ba5d851c5480cdfd6276e9d62907900ffff97860414a9cdce2ff3ce",
+      "source_sha256": "ddac97e98ba5d851c5480cdfd6276e9d62907900ffff97860414a9cdce2ff3ce"
+    },
+    {
+      "path": "versions/work-pet-v2/previews/failed.gif",
+      "source_group": "eclaire-work-pet-v2",
+      "published_sha256": "e3502d78c3283fdfa96c4477b4fdd5739917059f2a0e9be44a3fad05ff5965db",
+      "source_sha256": "e3502d78c3283fdfa96c4477b4fdd5739917059f2a0e9be44a3fad05ff5965db"
+    },
+    {
+      "path": "versions/work-pet-v2/previews/idle.gif",
+      "source_group": "eclaire-work-pet-v2",
+      "published_sha256": "f1a9aee57427cd2f4c3f8e43683f1612468e662040d39bcdf7b49171c247dd80",
+      "source_sha256": "f1a9aee57427cd2f4c3f8e43683f1612468e662040d39bcdf7b49171c247dd80"
+    },
+    {
+      "path": "versions/work-pet-v2/previews/jumping.gif",
+      "source_group": "eclaire-work-pet-v2",
+      "published_sha256": "f6711a7f1d771896cee4ddcd9b9425f4a6e292c084732eb78e3c7efc1dd42a52",
+      "source_sha256": "f6711a7f1d771896cee4ddcd9b9425f4a6e292c084732eb78e3c7efc1dd42a52"
+    },
+    {
+      "path": "versions/work-pet-v2/previews/review.gif",
+      "source_group": "eclaire-work-pet-v2",
+      "published_sha256": "5e5789e84782ea429f586d9a541f5cff703ee8ff09ab48f680a5c8b01b3101ac",
+      "source_sha256": "5e5789e84782ea429f586d9a541f5cff703ee8ff09ab48f680a5c8b01b3101ac"
+    },
+    {
+      "path": "versions/work-pet-v2/previews/running-left.gif",
+      "source_group": "eclaire-work-pet-v2",
+      "published_sha256": "efb2d1bd260999bd2a22ba43015937fd5ae8e5ec4e2cdbc285fa0578a22a184f",
+      "source_sha256": "efb2d1bd260999bd2a22ba43015937fd5ae8e5ec4e2cdbc285fa0578a22a184f"
+    },
+    {
+      "path": "versions/work-pet-v2/previews/running-right.gif",
+      "source_group": "eclaire-work-pet-v2",
+      "published_sha256": "6563130c284e8dbe8fbfe2a920faaf54dc97fe25d829ad17f4f989bb37732ece",
+      "source_sha256": "6563130c284e8dbe8fbfe2a920faaf54dc97fe25d829ad17f4f989bb37732ece"
+    },
+    {
+      "path": "versions/work-pet-v2/previews/running.gif",
+      "source_group": "eclaire-work-pet-v2",
+      "published_sha256": "7833166cd90404d67cb0ba04ccce6f8c2db5e9afd7be80be8544145764e37463",
+      "source_sha256": "7833166cd90404d67cb0ba04ccce6f8c2db5e9afd7be80be8544145764e37463"
+    },
+    {
+      "path": "versions/work-pet-v2/previews/waiting.gif",
+      "source_group": "eclaire-work-pet-v2",
+      "published_sha256": "9723c3b585ab78d969370eb18438baa693c4f05f5cc551a743a46e6e2e390fdd",
+      "source_sha256": "9723c3b585ab78d969370eb18438baa693c4f05f5cc551a743a46e6e2e390fdd"
+    },
+    {
+      "path": "versions/work-pet-v2/previews/waving.gif",
+      "source_group": "eclaire-work-pet-v2",
+      "published_sha256": "b4ef894e873b941c2cde6304c5f5e168abac12c9aebce991c9e723b4c9fa67db",
+      "source_sha256": "b4ef894e873b941c2cde6304c5f5e168abac12c9aebce991c9e723b4c9fa67db"
+    }
+  ]
+}
