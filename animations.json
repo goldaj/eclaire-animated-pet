@@ -1,0 +1,109 @@
+{
+  "title": "Éclaire · Animated Pet",
+  "format_version": 1,
+  "states": {
+    "idle": {
+      "animation": "assets/idle.gif",
+      "frames": [
+        "assets/idle-00.png",
+        "assets/idle-01.png",
+        "assets/idle-02.png",
+        "assets/idle-03.png",
+        "assets/idle-04.png",
+        "assets/idle-05.png"
+      ]
+    },
+    "jump": {
+      "animation": "assets/jump.gif",
+      "frames": [
+        "assets/jump-00.png",
+        "assets/jump-01.png",
+        "assets/jump-02.png",
+        "assets/jump-03.png",
+        "assets/jump-04.png"
+      ]
+    },
+    "wave": {
+      "animation": "assets/wave.gif",
+      "frames": [
+        "assets/wave-00.png",
+        "assets/wave-01.png",
+        "assets/wave-02.png",
+        "assets/wave-03.png"
+      ]
+    },
+    "waiting": {
+      "animation": "assets/waiting.gif",
+      "frames": [
+        "assets/waiting-00.png",
+        "assets/waiting-01.png",
+        "assets/waiting-02.png",
+        "assets/waiting-03.png",
+        "assets/waiting-04.png",
+        "assets/waiting-05.png"
+      ]
+    },
+    "active-work": {
+      "animation": "assets/active-work.gif",
+      "frames": [
+        "assets/active-work-00.png",
+        "assets/active-work-01.png",
+        "assets/active-work-02.png",
+        "assets/active-work-03.png",
+        "assets/active-work-04.png",
+        "assets/active-work-05.png"
+      ]
+    },
+    "review": {
+      "animation": "assets/review.gif",
+      "frames": [
+        "assets/review-00.png",
+        "assets/review-01.png",
+        "assets/review-02.png",
+        "assets/review-03.png",
+        "assets/review-04.png",
+        "assets/review-05.png"
+      ]
+    },
+    "failure": {
+      "animation": "assets/failure.gif",
+      "frames": [
+        "assets/failure-00.png",
+        "assets/failure-01.png",
+        "assets/failure-02.png",
+        "assets/failure-03.png",
+        "assets/failure-04.png",
+        "assets/failure-05.png",
+        "assets/failure-06.png",
+        "assets/failure-07.png"
+      ]
+    },
+    "fly-left": {
+      "animation": "assets/fly-left.gif",
+      "frames": [
+        "assets/fly-left-00.png",
+        "assets/fly-left-01.png",
+        "assets/fly-left-02.png",
+        "assets/fly-left-03.png",
+        "assets/fly-left-04.png",
+        "assets/fly-left-05.png",
+        "assets/fly-left-06.png",
+        "assets/fly-left-07.png"
+      ]
+    },
+    "fly-right": {
+      "animation": "assets/fly-right.gif",
+      "frames": [
+        "assets/fly-right-00.png",
+        "assets/fly-right-01.png",
+        "assets/fly-right-02.png",
+        "assets/fly-right-03.png",
+        "assets/fly-right-04.png",
+        "assets/fly-right-05.png",
+        "assets/fly-right-06.png",
+        "assets/fly-right-07.png"
+      ]
+    }
+  },
+  "preview": "assets/all-states.mp4"
+}
