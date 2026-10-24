@@ -20,13 +20,19 @@
   <header><h1>Éclaire</h1><p class="hint">Prévisualisation interactive des états du compagnon animé.</p></header>
   <div class="preview"><img id="pet" src="assets/idle.gif" alt="Éclaire en animation de repos"></div>
   <nav class="states" aria-label="États d'animation" id="states"></nav>
-  <p class="hint">Ressources de référence dans <code>assets/</code>. Aucun service ni compte requis.</p>
+  <p class="hint">Ressources de référence dans <code>assets/</code>. Aucun service ni compte requis. La préférence de réduction des animations du système est respectée.</p>
   <script>
     const stateNames = ['idle','jump','wave','waiting','active-work','review','failure','fly-left','fly-right'];
     const nav = document.getElementById('states');
     const img = document.getElementById('pet');
+    const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let selected = 'idle';
+    img.addEventListener('error', () => {
+      if (img.src.endsWith('.gif')) img.src = 'assets/' + selected + '-00.png';
+    });
     function select(name) {
-      img.src = 'assets/' + name + '.gif';
+      selected = name;
+      img.src = 'assets/' + name + (reducedMotion ? '-00.png' : '.gif');
       img.alt = 'Éclaire, état ' + name;
       nav.querySelectorAll('button').forEach(btn => btn.setAttribute('aria-pressed', String(btn.textContent === name)));
     }
