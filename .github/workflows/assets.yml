@@ -17,3 +17,4 @@ jobs:
         with:
           node-version: '22'
       - run: node tests/validate-assets.cjs
+      - run: node tests/preview-state.test.cjs
