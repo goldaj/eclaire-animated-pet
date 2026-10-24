@@ -14,17 +14,50 @@
     button { border: 1px solid #8196d4; border-radius: 12px; padding: 9px 14px; background: #273b65; color: inherit; cursor: pointer; }
     button[aria-pressed=true] { background: #b4c5ff; color: #1b2853; }
     .hint { color: #c8d2f1; }
+    .controls { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:18px; }
+    .controls select { background:#273b65; color:inherit; border:1px solid #8196d4; border-radius:10px; padding:8px; }
+    button:focus-visible, select:focus-visible { outline:3px solid #f3d67b; outline-offset:3px; }
+
   </style>
 </head>
 <body>
   <header><h1>Éclaire</h1><p class="hint">Prévisualisation interactive des états du compagnon animé.</p></header>
   <div class="preview"><img id="pet" src="assets/idle.gif" alt="Éclaire en animation de repos"></div>
   <nav class="states" aria-label="États d'animation" id="states"></nav>
+  <div class="controls">
+    <button id="demo" type="button" aria-pressed="false">Jouer un cycle de travail</button>
+    <label for="cycle-speed">Vitesse</label>
+    <select id="cycle-speed"><option value="2400">Calme</option><option value="1400" selected>Normale</option><option value="750">Rapide</option></select>
+    <span id="cycle-status" class="hint" role="status" aria-live="polite"></span>
+  </div>
   <p class="hint">Ressources de référence dans <code>assets/</code>. Aucun service ni compte requis. La préférence de réduction des animations du système est respectée.</p>
   <script>
     const stateNames = ['idle','jump','wave','waiting','active-work','review','failure','fly-left','fly-right'];
     const nav = document.getElementById('states');
     const img = document.getElementById('pet');
+    const demo = document.getElementById('demo');
+    const speed = document.getElementById('cycle-speed');
+    const status = document.getElementById('cycle-status');
+    const demoSequence = ['idle', 'waiting', 'active-work', 'review', 'idle'];
+    let demoTimer = null;
+    let demoIndex = 0;
+    function stopDemo() {
+      clearTimeout(demoTimer);
+      demoTimer = null;
+      demo.setAttribute('aria-pressed', 'false');
+      demo.textContent = 'Jouer un cycle de travail';
+      status.textContent = '';
+    }
+    function advanceDemo() {
+      select(demoSequence[demoIndex]);
+      if (demoIndex === demoSequence.length - 1) {
+        stopDemo();
+        status.textContent = 'Cycle terminé';
+        return;
+      }
+      demoIndex++;
+      demoTimer = setTimeout(advanceDemo, Number(speed.value));
+    }
     const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let selected = 'idle';
     img.addEventListener('error', () => {
@@ -38,8 +71,23 @@
     }
     stateNames.forEach(name => {
       const btn = document.createElement('button');
-      btn.type='button'; btn.textContent=name; btn.onclick=()=>select(name);
+      btn.type='button'; btn.textContent=name; btn.onclick=()=>{stopDemo();select(name)};
       btn.setAttribute('aria-pressed','false');nav.appendChild(btn);
+    });
+    demo.onclick=()=>{
+      if (demoTimer !== null) {stopDemo(); return;}
+      if (reducedMotion) return;
+      demoIndex = 0;
+      demo.setAttribute('aria-pressed', 'true');
+      demo.textContent = 'Arrêter le cycle';
+      advanceDemo();
+    };
+    if (reducedMotion) {
+      demo.disabled = true;
+      status.textContent = 'Cycle désactivé pour respecter la réduction des animations';
+    }
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopDemo();
     });
     select('idle');
   </script>
