@@ -3,39 +3,113 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Éclaire · Animated Pet</title>
+  <meta name="theme-color" content="#101a2d">
+  <title>Éclaire · Compagnon interactif</title>
   <style>
-    :root { color-scheme: dark; font: 16px system-ui, sans-serif; }
-    body { max-width: 840px; margin: 0 auto; padding: 32px 20px; background: #151b2b; color: #f4f6ff; }
-    header { margin-bottom: 24px; }
-    .preview { min-height: 300px; display: grid; place-items: center; border-radius: 24px; background: #283251; }
-    .preview img { width: min(270px, 90%); image-rendering: auto; }
-    .states { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-    button { border: 1px solid #8196d4; border-radius: 12px; padding: 9px 14px; background: #273b65; color: inherit; cursor: pointer; }
-    button[aria-pressed=true] { background: #b4c5ff; color: #1b2853; }
-    .hint { color: #c8d2f1; }
+    :root { color-scheme: dark; font: 16px/1.5 system-ui, -apple-system, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #101a2d; color: #f2f6ff; }
+    main { width: min(1120px, 100%); padding: 32px 20px 72px; margin: auto; }
+    h1 { font-size: clamp(2rem, 5vw, 3.4rem); letter-spacing: -.03em; margin: 8px 0; }
+    h2 { font-size: 1.15rem; margin: 0 0 12px; }
+    p { margin: 8px 0; }
+    .eyebrow { color: #a6bcff; font-weight: 700; letter-spacing: .16em; font-size: .75rem; text-transform: uppercase; }
+    .lead, .hint { color: #c0cdeb; }
+    .lead { font-size: 1.15rem; max-width: 680px; }
+    .layout { display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; margin-top: 28px; }
+    .panel { background: #1b2943; border: 1px solid #354d78; border-radius: 20px; padding: 22px; }
+    .scene { min-height: 395px; display: grid; place-items: center; position: relative; overflow: hidden;
+             border: 1px solid #496491; border-radius: 18px;
+             background: radial-gradient(circle at 50% 36%, #476b8a, #1b365b 54%, #12233e); }
+    .scene::after { content: ""; position: absolute; bottom: -70px; border: 1px solid #6083aa;
+                    border-radius: 50%; width: 380px; height: 180px; opacity: .5; pointer-events: none; }
+    .scene img { display: block; width: min(310px, 80%); height: auto; object-fit: contain; position: relative; z-index: 1; }
+    .state-summary { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+                     margin-top: 15px; font-size: .94rem; }
+    .state-summary strong { color: #c8dbff; }
+    .control-section + .control-section { margin-top: 24px; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 9px; }
+    button { font: inherit; cursor: pointer; border-radius: 10px; padding: 9px 12px;
+             background: #2a426b; color: #f4f7ff; border: 1px solid #6282b2; transition: background .15s; }
+    button:hover { background: #3e5b8d; }
+    button:focus-visible, input:focus-visible { outline: 3px solid #ffcf81; outline-offset: 3px; }
+    button[aria-pressed="true"] { background: #b9cfff; color: #182a4b; border-color: #dce5ff; }
+    button.primary { background: #436baf; border-color: #8db5f3; font-weight: 700; }
+    .checkbox { display: inline-flex; gap: 9px; align-items: center; margin-top: 14px; cursor: pointer; }
+    .checkbox input { width: 18px; height: 18px; }
+    .history { margin-top: 20px; }
+    #event-log { list-style: none; padding: 0; margin: 0; max-height: 210px; overflow-y: auto; }
+    #event-log li { border-top: 1px solid #374b6b; padding: 7px 0; color: #cbd8f4; font-size: .9rem; }
+    .small { font-size: .88rem; }
+    code { background: #293d5d; border-radius: 4px; padding: 1px 5px; }
+    footer { margin-top: 28px; color: #c0cdeb; }
+    @media (max-width: 760px) { .layout { grid-template-columns: 1fr; } .scene { min-height: 290px; } }
+    @media (prefers-reduced-motion: reduce) { button { transition: none; } }
   </style>
+  <script defer src="src/eclaire-engine.js"></script>
+  <script defer src="src/eclaire-widget.js"></script>
+  <script defer src="src/demo.js"></script>
 </head>
 <body>
-  <header><h1>Éclaire</h1><p class="hint">Prévisualisation interactive des états du compagnon animé.</p></header>
-  <div class="preview"><img id="pet" src="assets/idle.gif" alt="Éclaire en animation de repos"></div>
-  <nav class="states" aria-label="États d'animation" id="states"></nav>
-  <p class="hint">Ressources de référence dans <code>assets/</code>. Aucun service ni compte requis.</p>
-  <script>
-    const stateNames = ['idle','jump','wave','waiting','active-work','review','failure','fly-left','fly-right'];
-    const nav = document.getElementById('states');
-    const img = document.getElementById('pet');
-    function select(name) {
-      img.src = 'assets/' + name + '.gif';
-      img.alt = 'Éclaire, état ' + name;
-      nav.querySelectorAll('button').forEach(btn => btn.setAttribute('aria-pressed', String(btn.textContent === name)));
-    }
-    stateNames.forEach(name => {
-      const btn = document.createElement('button');
-      btn.type='button'; btn.textContent=name; btn.onclick=()=>select(name);
-      btn.setAttribute('aria-pressed','false');nav.appendChild(btn);
-    });
-    select('idle');
-  </script>
+<main>
+  <header>
+    <p class="eyebrow">Éclaire / Animated Pet</p>
+    <h1>Un compagnon qui réagit.</h1>
+    <p class="lead">Éclaire ne se contente plus de montrer des GIF. Son moteur reçoit des événements, joue une réaction, puis retrouve automatiquement son état de travail.</p>
+  </header>
+  <div class="layout">
+    <section class="panel" aria-label="Prévisualisation interactive">
+      <div class="scene" id="stage"></div>
+      <div class="state-summary">
+        <span>Animation : <strong id="current-state">au repos</strong></span>
+        <span>Mode persistant : <strong id="current-mode">idle</strong></span>
+      </div>
+      <p class="hint small" id="scenario-status" aria-live="polite">Séquence inactive</p>
+      <label class="checkbox"><input type="checkbox" id="reduce-motion"> Utiliser des images fixes</label>
+      <section class="history" aria-label="Journal des événements">
+        <h2>Journal des événements</h2>
+        <ol id="event-log"></ol>
+      </section>
+    </section>
+    <section class="panel" aria-label="Commandes du compagnon">
+      <div class="control-section">
+        <h2>Modes persistants</h2>
+        <p class="hint small">Définit ce que fait Éclaire entre deux réactions.</p>
+        <div class="buttons">
+          <button type="button" data-mode="idle">Repos</button>
+          <button type="button" data-mode="waiting">Attente</button>
+          <button type="button" data-mode="active-work">Travail</button>
+        </div>
+      </div>
+      <div class="control-section">
+        <h2>Réactions ponctuelles</h2>
+        <p class="hint small">Chaque animation revient au mode précédent ; une erreur n'est pas interrompue par un signal ordinaire.</p>
+        <div class="buttons">
+          <button type="button" data-signal="jump">Sauter</button>
+          <button type="button" data-signal="wave">Saluer</button>
+          <button type="button" data-signal="review">Vérifier</button>
+          <button type="button" data-signal="failure">Erreur</button>
+          <button type="button" data-signal="fly-left">Voler à gauche</button>
+          <button type="button" data-signal="fly-right">Voler à droite</button>
+        </div>
+      </div>
+      <div class="control-section">
+        <h2>Simuler la vie d'un agent</h2>
+        <p class="hint small">Des événements horodatés reproduisent une tâche qui réussit, qui échoue ou qui déplace le compagnon.</p>
+        <div class="buttons">
+          <button class="primary" type="button" data-scenario="success">Tâche réussie</button>
+          <button class="primary" type="button" data-scenario="failure">Tâche échouée</button>
+          <button type="button" data-scenario="movement">Déplacement</button>
+          <button type="button" id="stop-scenario">Arrêter</button>
+        </div>
+      </div>
+      <div class="control-section">
+        <h2>Intégration dans tes logiciels</h2>
+        <p class="hint small">Deux fichiers JavaScript sans framework ni serveur et les ressources <code>assets/</code>. Voir <code>docs/COMPANION_ENGINE.md</code> pour l'API et les événements.</p>
+      </div>
+    </section>
+  </div>
+  <footer class="small">Fonctionne localement : ouvre <code>index.html</code> dans un navigateur, même sans connexion. Aucune donnée personnelle envoyée.</footer>
+</main>
 </body>
 </html>
