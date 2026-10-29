@@ -20,3 +20,14 @@
 **Manquent :** questions/réponses intégrales de chaque session de conception, horaires individuels de certains messages et échanges Codex non publiés. Ne jamais reconstituer un dialogue en prétendant citer des propos exacts.
 
 Lorsque des exports ChatGPT authentiques sont fournis, les archiver par session, avec date ISO/fuseau, rôles et texte intégral en préservant leur ordre. Revoir toute donnée sensible avant de pousser sur GitHub. Après chaque modification, ajouter les échanges exacts nouvellement disponibles, puis actualiser les décisions et l'état vérifié.
+
+## Intervention fonctionnelle du 2026-10-29
+
+- **Utilisateur (verbatim, heure non disponible)** : « Trouve un sujet sur mon github sur lequel tu es pertinent pour avancer. Puis développe le nécessaire en documentant. Bref finalement fait comme tu sais faire, on en a déjà parlé pleins de fois dans ce projet ChatGPT »
+- **Assistant (résumé reconstruit, non verbatim)** : inventaire de 41 dépôts puis sélection d'Éclaire, insuffisamment développé fonctionnellement, pour un moteur de réactions réutilisable et testable plutôt qu'une simple documentation.
+- **Décision technique (2026-10-29)** : conserver intactes les animations historiques, développer une machine d'états autonome, un widget DOM, une simulation d'événements locaux, des tests automatisés et une documentation d'intégration.
+- **Implémentation dans `feat/reactive-companion-engine-20261029`** : moteur `src/eclaire-engine.js`, widget `src/eclaire-widget.js`, galerie interactive `index.html` et `src/demo.js`, tests dans `tests/engine.test.cjs`, CI `.github/workflows/tests.yml`, contrat dans `docs/COMPANION_ENGINE.md`.
+- **Validation réellement exécutée au moment de cette note** : 11 vérifications JS isolées en mémoire par exécution du moteur et du widget récupérés depuis GitHub, toutes passées. La suite Node (fichier `tests/engine.test.cjs`) est commitée et prête pour la CI ; ne pas prétendre qu'elle a été lancée localement tant que son exécution n'est pas confirmée. Aucun essai visuel de navigateur réel ni intégration Jade n'a été réalisé dans cette session.
+- **À poursuivre** : consulter la CI de la PR, essais visuels, intégration avec un émetteur réel d'événements, puis tests de navigateur et desktop si besoin. Instructions détaillées dans `docs/COMPANION_ENGINE.md`.
+
+> Cette entrée ne constitue pas une transcription complète de la conversation ; seuls les propos utilisateur cités ci-dessus sont repris verbatim.
