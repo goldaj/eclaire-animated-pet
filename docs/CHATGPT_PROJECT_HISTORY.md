@@ -31,3 +31,10 @@ Lorsque des exports ChatGPT authentiques sont fournis, les archiver par session,
 - **À poursuivre** : consulter la CI de la PR, essais visuels, intégration avec un émetteur réel d'événements, puis tests de navigateur et desktop si besoin. Instructions détaillées dans `docs/COMPANION_ENGINE.md`.
 
 > Cette entrée ne constitue pas une transcription complète de la conversation ; seuls les propos utilisateur cités ci-dessus sont repris verbatim.
+
+### Confirmation de l'intégration continue (2026-10-29)
+
+- Pull request créée : https://github.com/goldaj/eclaire-animated-pet/pull/2 ; état ouvert, branche `main` non modifiée.
+- GitHub a confirmé la PR **fusionnable, sans conflit** (`mergeable_state: clean`).
+- GitHub Actions `Éclaire — tests` a exécuté la suite Node et les contrôles syntaxiques sur la branche : exécution terminée avec **succès** (exemple : https://github.com/goldaj/eclaire-animated-pet/actions/runs/40842397409).
+- Les tests navigateur interactifs et l'adaptateur à une activité d'agent réelle restent à réaliser.
