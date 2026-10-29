@@ -1,32 +1,53 @@
 # Éclaire | Animated Pet
 
-**Bibliothèque d'animations 2D | sprites PNG · GIF · spritesheets**
+**Compagnon 2D intégrable en HTML/JavaScript · 9 animations · sans framework ni serveur**
 
-Éclaire est un personnage animé conçu pour servir de compagnon graphique dans une application ou un environnement de travail. Ce dépôt conserve les ressources visuelles, les planches de sprites et les prévisualisations des différents comportements.
+Éclaire était à l'origine une bibliothèque de sprites et une galerie GIF. Le nouveau moteur ajoute une logique de réactions : une tâche peut placer le compagnon en travail, une validation le faire réagir, une erreur prendre temporairement la priorité, puis le personnage revient à son état de fond.
 
-## Animations disponibles
+## Essayer immédiatement
 
-- `idle`, `jump`, `wave` et déplacements `fly-left` / `fly-right`
-- `waiting`, `active-work`, `review` et `failure`
-- Variantes PNG frame par frame, GIFs animés et spritesheet
-- Prévisualisation vidéo de l'ensemble des états
+1. Ouvrir **`index.html`** dans un navigateur desktop ou mobile.
+2. Tester les modes **Repos**, **Attente**, **Travail**, puis les six réactions.
+3. Lancer **Tâche réussie**, **Tâche échouée** ou **Déplacement** pour observer des événements simulés.
+4. Cocher **Utiliser des images fixes** pour limiter les mouvements.
 
-## Arborescence
+La démo fonctionne aussi comme fichier local `file://`, sans installation. Elle n'est **pas connectée** à Jade, Codex ou à un service externe.
 
-`assets/` contient les ressources de référence, destinées à être chargées par une interface web, un petit outil desktop ou un moteur 2D.
+## Réutiliser dans un logiciel
 
-## Intégration
+Le moteur se compose de :
 
-Le dépôt fournit des **assets et états d'animation**, pas encore un moteur d'animation exécutable. Une galerie web est déjà disponible dans `index.html`. Un manifeste structuré des états et des timings reste une évolution possible.
+| Fichier | Fonction |
+| --- | --- |
+| `src/eclaire-engine.js` | État persistant, réactions temporaires, priorité des erreurs, annulations |
+| `src/eclaire-widget.js` | Widget HTML `img` piloté par le moteur, GIF ou PNG réduit |
+| `src/demo.js` | Simulateur de tâches et commandes de la galerie |
+| `animations.json` | Manifeste des neuf états et de leurs ressources |
+| `assets/` | Animations originales GIF, PNG, spritesheet et vidéo |
 
-## Compétences
+**[Guide technique et instructions pour Codex](docs/COMPANION_ENGINE.md)** : API, exemple d'intégration, tests, limites et travaux suivants.
 
-Direction visuelle de prototype, déclinaison de sprites, gestion d'assets et spécification d'états UI.
+## États existants
 
-## Archive native supplémentaire
+- Persistants : `idle`, `waiting`, `active-work`.
+- Réactions temporaires : `jump`, `wave`, `review`, `failure`, `fly-left`, `fly-right`.
 
-La [variante Work Pet v2](versions/work-pet-v2/) conserve aussi la planche WebP et les prévisualisations natives du compagnon original.
+Le code ne modifie pas les images originales. Les ressources de la variante **Work Pet v2** restent archivées dans `versions/work-pet-v2/`.
 
-## Prévisualiser
+## Tests
 
-Ouvrir `index.html` dans un navigateur : la galerie présente les GIFs de `assets/` et permet de choisir les neuf états d'animation. Aucun serveur, compte ou installation n'est requis. Cette galerie sert à prévisualiser les ressources ; elle ne constitue pas un moteur d'animation intégré à une application.
+Node.js 18+ suffit, sans `npm install` :
+
+```bash
+node --test tests/*.test.cjs
+```
+
+Une GitHub Action exécute ces tests sur les PR et les branches concernées. Pour une validation réelle, vérifier aussi les états et les scénarios dans un navigateur. Le moteur ne détecte pas spontanément l'activité d'un agent : **c'est l'application hôte qui envoie les événements**.
+
+## Périmètre
+
+Les visuels et GIFs sont fournis pour les prototypes d'interface et compagnons graphiques. Ce dépôt ne prétend pas fournir une surcouche native du bureau, de la transparence de fenêtre, un rig 2D, des physiques Live2D ou un flux d'événements en temps réel. Un adaptateur est à concevoir pour une intégration future avec Jade ou d'autres outils.
+
+## Traçabilité
+
+Consulter `AGENTS.md` et `docs/CHATGPT_PROJECT_HISTORY.md` avant toute intervention. Ne pas écraser les variantes historiques et distinguer les validations automatisées des essais visuels.

@@ -33,3 +33,21 @@ Lorsque des exports ChatGPT authentiques sont fournis, les archiver par session,
 **Assistant (résumé reconstruit, non verbatim)** : revue des gros dépôts et amélioration isolée sur `chatgpt/review-20261024`. Galerie : respect prefers-reduced-motion et fallback PNG ; validation des fichiers GIF/frames dans GitHub Actions.
 
 **Validation et confiance** : confiance élevée sur la portée du changement ; aucune exécution locale des tests ne peut être attestée depuis l'accès GitHub disponible. Consulter les statuts GitHub Actions de la PR avant intégration. Aucune modification de `main`/`develop`, aucun déploiement. Codex doit inspecter le diff, relancer les tests et choisir les commits à intégrer sans écraser son travail.
+
+## Intervention fonctionnelle du 2026-10-29
+
+- **Utilisateur (verbatim, heure non disponible)** : « Trouve un sujet sur mon github sur lequel tu es pertinent pour avancer. Puis développe le nécessaire en documentant. Bref finalement fait comme tu sais faire, on en a déjà parlé pleins de fois dans ce projet ChatGPT »
+- **Assistant (résumé reconstruit, non verbatim)** : inventaire de 41 dépôts puis sélection d'Éclaire, insuffisamment développé fonctionnellement, pour un moteur de réactions réutilisable et testable plutôt qu'une simple documentation.
+- **Décision technique (2026-10-29)** : conserver intactes les animations historiques, développer une machine d'états autonome, un widget DOM, une simulation d'événements locaux, des tests automatisés et une documentation d'intégration.
+- **Implémentation dans `feat/reactive-companion-engine-20261029`** : moteur `src/eclaire-engine.js`, widget `src/eclaire-widget.js`, galerie interactive `index.html` et `src/demo.js`, tests dans `tests/engine.test.cjs`, CI `.github/workflows/tests.yml`, contrat dans `docs/COMPANION_ENGINE.md`.
+- **Validation réellement exécutée au moment de cette note** : 11 vérifications JS isolées en mémoire par exécution du moteur et du widget récupérés depuis GitHub, toutes passées. La suite Node (fichier `tests/engine.test.cjs`) est commitée et prête pour la CI ; ne pas prétendre qu'elle a été lancée localement tant que son exécution n'est pas confirmée. Aucun essai visuel de navigateur réel ni intégration Jade n'a été réalisé dans cette session.
+- **À poursuivre** : consulter la CI de la PR, essais visuels, intégration avec un émetteur réel d'événements, puis tests de navigateur et desktop si besoin. Instructions détaillées dans `docs/COMPANION_ENGINE.md`.
+
+> Cette entrée ne constitue pas une transcription complète de la conversation ; seuls les propos utilisateur cités ci-dessus sont repris verbatim.
+
+### Confirmation de l'intégration continue (2026-10-29)
+
+- Pull request créée : https://github.com/goldaj/eclaire-animated-pet/pull/2 ; état ouvert, branche `main` non modifiée.
+- GitHub a confirmé la PR **fusionnable, sans conflit** (`mergeable_state: clean`).
+- GitHub Actions `Éclaire — tests` a exécuté la suite Node et les contrôles syntaxiques sur la branche : exécution terminée avec **succès** (exemple : https://github.com/goldaj/eclaire-animated-pet/actions/runs/40842397409).
+- Les tests navigateur interactifs et l'adaptateur à une activité d'agent réelle restent à réaliser.
