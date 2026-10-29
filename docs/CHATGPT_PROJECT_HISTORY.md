@@ -21,6 +21,19 @@
 
 Lorsque des exports ChatGPT authentiques sont fournis, les archiver par session, avec date ISO/fuseau, rôles et texte intégral en préservant leur ordre. Revoir toute donnée sensible avant de pousser sur GitHub. Après chaque modification, ajouter les échanges exacts nouvellement disponibles, puis actualiser les décisions et l'état vérifié.
 
+## 2026-10-24 — Revue parallèle multi-dépôts (heure non disponible)
+
+**Utilisateur (verbatim, message visible dans cette conversation)** :
+
+> tu vois tout le boulot qu'on a fait sur la conversation Avancement projets codex ?
+> Tu vas refaire la même chose sur TOUT mon repo git. Tu vas commencer par les projets les plus gros, regarder ce que tu peux faire dessus et le faire sur ta branch (même consignes que sur l'autre conversation).
+> Tu vas ensuite me faire un rapport très succint des projets que t'as touché et de ce que t'as avancé dessus.
+> Amuse toi !
+
+**Assistant (résumé reconstruit, non verbatim)** : revue des gros dépôts et amélioration isolée sur `chatgpt/review-20261024`. Galerie : respect prefers-reduced-motion et fallback PNG ; validation des fichiers GIF/frames dans GitHub Actions.
+
+**Validation et confiance** : confiance élevée sur la portée du changement ; aucune exécution locale des tests ne peut être attestée depuis l'accès GitHub disponible. Consulter les statuts GitHub Actions de la PR avant intégration. Aucune modification de `main`/`develop`, aucun déploiement. Codex doit inspecter le diff, relancer les tests et choisir les commits à intégrer sans écraser son travail.
+
 ## Intervention fonctionnelle du 2026-10-29
 
 - **Utilisateur (verbatim, heure non disponible)** : « Trouve un sujet sur mon github sur lequel tu es pertinent pour avancer. Puis développe le nécessaire en documentant. Bref finalement fait comme tu sais faire, on en a déjà parlé pleins de fois dans ce projet ChatGPT »
