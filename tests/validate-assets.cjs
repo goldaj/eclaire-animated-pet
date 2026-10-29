@@ -17,7 +17,11 @@ for (const [name, state] of states) {
 }
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 assert(html.includes('prefers-reduced-motion'));
+const engine = require('../src/eclaire-engine.js');
+const widget = require('../src/eclaire-widget.js');
 for (const [name] of states) {
-  assert(html.includes("'" + name + "'"), 'Preview missing state: ' + name);
+  assert(engine.STATES.includes(name), 'Engine missing manifest state: ' + name);
+  assert(Object.hasOwn(widget.LABELS, name), 'Widget missing accessible label: ' + name);
 }
+assert(html.includes('src/eclaire-widget.js'), 'Preview must use the new widget');
 console.log('OK: nine previews and accessible still frames');
